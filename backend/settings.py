@@ -69,7 +69,8 @@ MIDDLEWARE = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000"
+    "http://localhost:3000",
+    "https://youtube-backend-production-fa3f.up.railway.app/"
 ]
 CORS_ALLOW_ALL_ORIGINS = True
 
