@@ -1,0 +1,45 @@
+from django.urls import path, include
+from .views import (
+    VideoUploadView,
+    create_comment,
+    get_comments,
+    get_video_detail,
+    get_videos,
+    react_to_video,
+    get_todos,
+    CustomTokenObtainPairView,
+    CustomTokenRefreshView,
+    logout,
+    register,
+    is_logged_in,
+    update_comment,
+    delete_comment,
+    popular_videos,
+    get_history,
+    RegisterViewHistory
+)
+
+urlpatterns = [
+    path('login/', CustomTokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('logout/', logout),
+    path('token/refresh/', CustomTokenRefreshView.as_view(), name='token_refresh'),
+    path('todos/', get_todos),
+    path('register/', register),
+    path('authenticated/', is_logged_in),
+    path("upload/", VideoUploadView.as_view(), name="video_upload"),
+    path('videos/', get_videos, name='get_videos'),
+    path('videos/<int:video_id>/', get_video_detail, name='video_detail'),
+    path('videos/<int:video_id>/react/', react_to_video, name='react_to_video'),
+    path('videos/<int:video_id>/comments/', get_comments, name='get_comments'),
+    path('videos/<int:video_id>/comments/create/',
+         create_comment, name='create_comment'),
+    path('videos/comments/<int:comment_id>/update/',
+         update_comment, name='update_comment'),
+    path('videos/comments/<int:comment_id>/delete/',
+         delete_comment, name='delete_comment'),
+    path('popular/', popular_videos, name='popular_videos'),
+    path('history/', get_history, name='get_history'),
+    path('history/register/', RegisterViewHistory.as_view(),
+         name='register_history'),
+
+]
